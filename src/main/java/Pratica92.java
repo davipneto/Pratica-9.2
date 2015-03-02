@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Timer;
@@ -19,7 +20,7 @@ public class Pratica92 {
     
     private static final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
             
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
         
         System.out.println("Pressione Enter para terminar");
         System.out.println("Hora de início: " + sdf.format(new Date()));
@@ -27,5 +28,9 @@ public class Pratica92 {
         Timer t1 = new Timer("minuto-cheio");
         t1.schedule(new MinutoTask(), atraso, 60000);
         
+        System.in.read();
+        t1.cancel();
+        
+        System.out.println("Hora de Término: "+ sdf.format(new Date()));
     }
 }
