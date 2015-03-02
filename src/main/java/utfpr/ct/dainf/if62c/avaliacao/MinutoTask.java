@@ -18,8 +18,12 @@ public class MinutoTask extends TimerTask {
     
     private final Date now = new Date();
     private final SimpleDateFormat sdf = new SimpleDateFormat("'Hora:' HH:mm:ss");
-    Timer t = new Timer("minuto-impar");
+    Timer t;
     MensagemImparTask mti;
+    
+    public MinutoTask(Timer t){
+        this.t = t;
+    }
     
     public boolean eimpar(){
         return System.currentTimeMillis() % 120000 >= 60000;

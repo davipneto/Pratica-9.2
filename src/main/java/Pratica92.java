@@ -26,10 +26,12 @@ public class Pratica92 {
         System.out.println("Hora de início: " + sdf.format(new Date()));
         long atraso = 60000 - new Date().getTime()%60000;
         Timer t1 = new Timer("minuto-cheio");
-        t1.schedule(new MinutoTask(), atraso, 60000);
+        Timer t2 = new Timer("minuto-impar");
+        t1.schedule(new MinutoTask(t2), atraso, 60000);
         
         System.in.read();
         t1.cancel();
+        t2.cancel();
         
         System.out.println("Hora de Término: "+ sdf.format(new Date()));
     }
