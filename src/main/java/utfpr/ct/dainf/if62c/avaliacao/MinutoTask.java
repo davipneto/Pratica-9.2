@@ -22,7 +22,7 @@ public class MinutoTask extends TimerTask {
     MensagemImparTask mti;
     
     public boolean eimpar(){
-        return now.getTime() % 120000 >= 60000;
+        return System.currentTimeMillis() % 120000 >= 60000;
     }
     
     @Override
@@ -32,9 +32,10 @@ public class MinutoTask extends TimerTask {
         if(eimpar()){
             mti = new MensagemImparTask();
             t.schedule(mti, 10000, 10000);
-        }{
+        }
+        else {
             if(mti!=null){
-                mti.cancel();
+                  mti.cancel();
             }
         }
     }
